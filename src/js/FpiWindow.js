@@ -22,12 +22,8 @@ class FpiWindow extends HTMLElement {
         this.shadow.append(this.template)
         this.searchInput.focus()
 
-        this.id = WindowElement.COUNT
-        this.style = `top: ${170 + this.id * 10}px; left: ${370 + this.id * 10}px;`
-        WindowElement.count++
 
         this.searchForm.addEventListener('submit', this.searchFormSubmit.bind(this))
-        this.addEventListener('click', this.putOnTop)
         this.addEventListener('click', this.focusOnInput)
 
         setTimeout(this.findLocation.bind(this), 2*1000)
