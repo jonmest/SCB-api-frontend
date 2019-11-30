@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.js"></script>
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/mystyles.css">
+    <script async type="module" src="../js/FastighetsprisIndex.js"></script>
+    <script async type="module" src="../js/FpiWindow.js"></script>
+    <script async type="module" src="../js/WindowElement.js"></script>
+    <template id="memoryCanvas">
+      <div id="canvas">
+
+      </div>
+      <!-- <link rel="stylesheet" href="./css/memoryStyle.css"> -->
+  </template>
+
+    <template id="window-template">
+      <section class="section">
+        <div class="container">
+          <div class="columns is-centered is-vcentered">
+            <div class="column">
+
+      <h1 class="title">Sök fastighetsprisindex efter län:</h1>
+      <div class="canvas">
+    </div>
+    
+      
+    </div>
+  </div>
+  </div>
+</section>
+
+      <link rel="stylesheet" href="css/mystyles.css">
+
+
+  </template>
+
+
+
+
+  <template id="fastighetsPrisIndexTemplate">
+
+    <h2 class="subtitle">
+      Skriv in ditt län:
+  </h2>
+  <form id="searchForm">
+  <div class="columns">
+          <div class="column" id="searchColumn">
+                  <input placeholder="Var bor du?" type="text" id="searchInput" list="region" class="input is-large">
+                  <datalist id="region">
+                          <option value="Hela Sverige">Hela Sverige</option>
+                          <option value="Stockholms län">Stockholms l&#228;n</option>
+                          <option value="Uppsala län">Uppsala l&#228;n</option>
+                          <option value="Södermanland län">S&#246;dermanlands l&#228;n</option>
+                          <option value="Östergötland län">&#214;sterg&#246;tlands l&#228;n</option>
+                          <option value="Jönköping län">J&#246;nk&#246;pings l&#228;n</option>
+                          <option value="Kronobergs län">Kronobergs l&#228;n</option>
+                          <option value="Kalmar och Gotlands län">Kalmar och Gotlands l&#228;n</option>
+                          <option value="Blekinge län">Blekinge l&#228;n</option>
+                          <option value="Skåne län">Skåne l&#228;n</option>
+                          <option value="Hallands län">Hallands l&#228;n</option>
+                          <option value="Västra Götalands län">V&#228;stra G&#246;talands l&#228;n</option>
+                          <option value="Värmlands län">V&#228;rmlands l&#228;n</option>
+                          <option value="Örebro län">&#214;rebro l&#228;n</option>
+                          <option value="Västmanlands län">V&#228;stmanlands l&#228;n</option>
+                          <option value="Dalarnas län">Dalarnas l&#228;n</option>
+                          <option value="Gävleborgs län">G&#228;vleborgs l&#228;n</option>
+                          <option value="Västernorrlands län">V&#228;sternorrlands l&#228;n</option>
+                          <option value="Jämtlands län">J&#228;mtlands l&#228;n</option>
+                          <option value="Västerbottens län">Västerbottens län</option>
+                          <option value="Norrbottens län">Norrbottens län</option>
+                      </datalist>
+          </div>
+          <div class="column">
+                  <button id="searchSubmit" class="button is-link is-large">Sök nu</button>                                </div>
+
+        </div>
+      </form>
+</div>
+</div>
+</section>
+<section id="dataSection" class="container">                                  
+<div class="hero-body container" >
+<div class="container" id="dataSectionContainer"></div>
+
+
+</div>
+
+
+</section>
+<link rel="stylesheet" href="css/mystyles.css">
+
+  </template>
+
+  <template id="locationDetectFooter">
+    
+      <div class="notification">
+          <div class="columns is-vcentered">
+              <div class="column">
+                  <p class="card-footer-item">
+                      <span>
+                        Försöker hitta med GPS...
+                      </span>
+                    </p>              </div>
+              <div class="column">
+                  <span>
+                      <progress class="progress is-small is-danger" max="10">95%</progress>      </span>              </div>
+              
+            </div>
+
+
+    
+  </div>
+  </template>
+
+
+
+
+  <template id="graph">
+    <section class="graphArea">
+     <div class="hero-body ">
+             <div class="container has-text-centered">
+                 <div class="columns is-centered">      <div class="column is-half"></div>
+
+               <h1 id="header" class="title">
+                   Län
+               </h1>
+               <p id="description">Fastighetsprisindex</p>
+               </div></div>
+     <section class="section">
+             <div class="container" style="position: relative; max-width: 100%">
+
+               <div id="canv-container" class="box container chart-container" style="position: relative;">
+                             <canvas id="chartCanvas"></canvas>
+                           </div></div>
+</div>
+</div>
+
+           </section>
+</template>
+  
+    
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p>You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <fpi-window></fpi-window>
+
+
+</body>
+</html>

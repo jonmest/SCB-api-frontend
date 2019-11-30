@@ -1,5 +1,6 @@
 const HTMLWebPackPlugin = require('html-webpack-plugin')
 var path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   output: {
@@ -14,6 +15,22 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.scss$/,
+        use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+                // options...
+              }
+            }
+          ]
+      },
       {
         // set up standard-loader as a preloader
         enforce: 'pre',
@@ -54,6 +71,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/mystyles.css'
+    }),
     new HTMLWebPackPlugin({
       template: './src/index.html',
       // favicon: './src/favicon.ico',
