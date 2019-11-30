@@ -23,7 +23,10 @@ class Fastighetsprisindex extends ChartElement {
   get county () {
     return this.getAttribute('county')
   }
-
+  /**
+   * Generates new Chart.js on canvas
+   * @param  {Object} data
+   */
   async generateChart (data) {
     const ctx = this.chartCanvas.getContext('2d')
     const myChart = new Chart(ctx, {

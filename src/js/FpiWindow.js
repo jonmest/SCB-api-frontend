@@ -1,4 +1,3 @@
-import { WindowElement } from "./WindowElement.js"
 import { getLocation } from './getLocation.js'
 import { searchDict } from './searchDict.js'
 
@@ -16,9 +15,10 @@ class FpiWindow extends HTMLElement {
 
     }
 
-    connectedCallback() {
-        console.log(this.canvas)
-
+    /**
+     * Executed when reaching DOM
+     */
+    connectedCallback () {
         this.shadow.append(this.template)
         this.searchInput.focus()
 
@@ -33,7 +33,11 @@ class FpiWindow extends HTMLElement {
         setTimeout(this.findLocation.bind(this), 2*1000)
     }
 
-    findLocation() {
+    /**
+     * Prompts user for access to their location
+     * If accepted, searches for their county
+     */
+    findLocation () {
         const footerItems = document.querySelector('#locationDetectFooter').cloneNode(true).content
         this.canvas.append(footerItems)
 
@@ -52,7 +56,11 @@ class FpiWindow extends HTMLElement {
 
     }
 
-    async searchFormSubmit(event) {
+    /**
+     * Validates search and submits it
+     * @param  {Event} event
+     */
+    async searchFormSubmit (event) {
         event ? event.preventDefault() : event = null
         const searchQuery = searchDict[this.searchInput.value]
 
@@ -63,14 +71,12 @@ class FpiWindow extends HTMLElement {
         this.searchInput.classList.remove('is-danger')
 
         const buttonElement = this.canvas.querySelector('#searchSubmit')
-
         buttonElement.classList.add('is-loading')
 
         const element = document.createElement('section')
         element.innerHTML = `<fastighetspris-index county="${searchQuery}"></fastighetspris-index>`
 
         const dataSection = this.shadow.querySelector('#dataSectionContainer')
-        console.log(dataSection)
 
         setTimeout(() => {
             buttonElement.classList.remove('is-loading')
@@ -79,6 +85,11 @@ class FpiWindow extends HTMLElement {
         }, 300)
     }
 
+    /**
+     * When user clicks on area,
+     * focus on input
+     * @param  {Event} event
+     */
     focusOnInput (event) {
         this.searchInput.focus()
       }

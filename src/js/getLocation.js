@@ -1,6 +1,11 @@
 import { searchDict, searchDictMirror } from './searchDict.js'
 const apiKey = 'AIzaSyAaKuNoyI64JLUYMPU5lsMo4rJq5uys8MM'
-async function getLocation (element) {
+
+/**
+ * Fetch location from client
+ * @returns {number} county code
+ */
+async function getLocation () {
     try {
         if ('geolocation' in navigator) {
             const loc = new Promise((resolve, reject) => {
@@ -17,7 +22,12 @@ async function getLocation (element) {
     }
 
 }
-
+/**
+ * Translate client's location to 
+ * corresponding county code
+ * @param  {Object} location
+ * @returns {number}
+ */
 async function getCounty (location) {
   const coords = `${location.coords.latitude},${location.coords.longitude}`
   const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords}&key=${apiKey}`

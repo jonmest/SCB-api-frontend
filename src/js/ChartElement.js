@@ -12,7 +12,9 @@ class ChartElement extends HTMLElement {
     this.url = `http://localhost:3000/index/county/${this.county}`
     
   }
-
+  /**
+   * Fetches data from API server on port 3000
+   */
   async fetchData () {
     const response = await fetch(this.url, { mode: 'cors' })
     const data = await response.json()
